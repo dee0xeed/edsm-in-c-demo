@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Usage:
+# First set approapriate 'Version' and 'Architecture' in DEB/DEBIAN/control
+# Then just run this script
+
+### TODO - pkg-config systemd --variable=systemdsystemunitdir
+
+CONTROL_FILE="DEB/DEBIAN/control"
+RELEASE=`grep Version DEB/DEBIAN/control | awk '{print $2}'`
+ARCH=`grep Architecture DEB/DEBIAN/control | awk '{print $2}'`
+PACKET="echod"
+
+DEB_PACKET="$PACKET-"$RELEASE"_"$ARCH".deb"
+echo "Making release $RELEASE for $ARCH..."
+
+make cleanall 1>/dev/null || exit 1
+make 1>/dev/null || exit 1
+
+rm -fv *.deb
+rm -vf `find DEB/ -name *.so`
+rm -vf DEB/opt/$PACKET/*
+
+echo -n "Copying state machine descriptions... "
+cp -u echo-server/smd/* DEB/opt/$PACKET/ || exit 0
+echo "done"
+
+echo -n "Copying binaries... "
+cp -u echo-server/echod  DEB/opt/$PACKET/ || exit 0
+echo "done"
+
+echo $RELEASE >DEB/opt/$PACKET/.version
+date +%F >DEB/opt/$PACKET/.build
+dpkg -b DEB $DEB_PACKET || exit 1
+echo "$DEB_PACKET is ready."

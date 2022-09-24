@@ -1,0 +1,16 @@
+
+T180000
+
+$init
+$idle
+$work
+
++init M0 idle
+
+@idle M1
++idle M0 work
+
+@work D0
+@work D2
+@work T0
++work M0 idle

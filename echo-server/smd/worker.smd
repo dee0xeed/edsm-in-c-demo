@@ -1,0 +1,20 @@
+
+$init
+$idle
+$getp
+$ackp
+
++init M0 idle
+
+@idle M1
++idle M0 getp
+
+@getp M1
+@getp M2
++getp M0 ackp
++getp M3 idle
+
+@ackp M1
+@ackp M2
++ackp M0 getp
++ackp M3 idle

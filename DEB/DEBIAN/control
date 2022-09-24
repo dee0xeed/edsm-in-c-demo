@@ -1,0 +1,9 @@
+Package: echod
+Version: 1.0
+Architecture: amd64
+Depends: systemd
+Maintainer: Eugene Zhiganov <dee0xeed@gmail.com>
+Section: main/net
+Priority: optional
+Description: EDSM-G2 based echo server
+ EDSM-G2 based echo server

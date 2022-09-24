@@ -1,0 +1,19 @@
+[Unit]
+Description=Echo Server
+
+[Service]
+Environment="TCP_PORT=1771"
+Environment="MIL_THRESHOLD=4"
+Type=simple
+ExecStart=/opt/echod/echod
+ExecStop=/bin/kill -15 $MAINPID
+Restart=on-watchdog
+WatchdogSec=60
+RestartSec=30
+User=echod
+Group=echod
+Nice=0
+
+[Install]
+Alias=echod.service
+WantedBy=default.target

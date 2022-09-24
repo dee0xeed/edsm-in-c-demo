@@ -1,0 +1,9 @@
+
+$init
+$work
+
++init M0 work
+
+@work D0
+@work M0
+@work M1

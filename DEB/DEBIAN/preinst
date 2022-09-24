@@ -1,0 +1,16 @@
+#!/bin/bash -e
+
+if ! getent group echod >/dev/null; then
+	addgroup --system echod >/dev/null
+fi
+
+if ! getent passwd echod >/dev/null; then
+	adduser			\
+	  --system 		\
+	  --disabled-login	\
+	  --ingroup echod	\
+	  --home /opt/echod	\
+	  --gecos "Echo Server" \
+	  --shell /bin/false	\
+	  echod  >/dev/null
+fi

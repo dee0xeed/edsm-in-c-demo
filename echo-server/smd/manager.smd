@@ -1,0 +1,13 @@
+
+S2
+S15
+
+$init
+$work
+
++init M0 work
+
+@work M0
+@work M1
+@work S0
+@work S1

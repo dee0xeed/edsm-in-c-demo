@@ -1,0 +1,13 @@
+
+$init
+$idle
+$work
+
++init M0 idle
+
+@idle M1
++idle M0 work
+
+@work D1
+@work D2
++work M0 idle

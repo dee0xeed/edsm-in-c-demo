@@ -1,0 +1,11 @@
+
+T60000
+T10000
+
+$init
+$work
+
++init M0 work
+
+@work T0
+@work T1
