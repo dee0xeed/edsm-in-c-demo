@@ -1,6 +1,5 @@
 
 /*
- * DOTS-DAQ: Data Acquisition for Distant Objects Tracking System
  * Author: Eugene Zhiganov, dee0xeed@gmail.com
  */
 
